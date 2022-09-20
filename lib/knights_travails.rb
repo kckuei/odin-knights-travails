@@ -28,7 +28,7 @@ def knight_moves(start, dest, size)
   col = [-1, 1, 1, -1, 2, -2, 2, -2]
 
   # initialize start and end nodes
-  start_node = Node.new(start[0], start[1])
+  start_node = Node.new(start[0], start[1], dist = 0, path = [start])
   dest_node = Node.new(dest[0], dest[1])
 
   # set to check if the matrix cell is visited before or not
