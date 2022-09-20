@@ -1,5 +1,20 @@
 # Knights Travails
-* Implementation of `knight_moves` function using a breath-first approach with `ruby`. This is a modified implementation of the example given/disscused [here](https://www.techiedelight.com/chess-knight-problem-find-shortest-path-source-destination/)).
+* Implementation of `knight_moves` function using a breath-first approach with `ruby`. This is a modified implementation of the example given/disscused [here](https://www.techiedelight.com/chess-knight-problem-find-shortest-path-source-destination/)). Another interesting solution [here](https://github.com/qpongratz/knights-travails/blob/main/knight_moves.rb). 
+
+* Conceptually how this algorithm works:
+  * The knight has 8 possible permutation movements that it can move relative to a starting point
+  * Each position on the board can be represented by a node with row/column indices x, y, and a distance and path attribute
+  * The distance and path attributes keep track of the number of steps, and previous board positions leading up to that point
+  * Use a set to keep track of squares that have already been visited
+  * Begin by populating the queue with the first node (starting point), and initializing the set
+  * Until the queue is empty
+    * Get the next node in the queue
+    * Check if it is the node we're looking for, and return that node if it is
+    * Otherwise if this is a previously unvisited node
+      * Loop over all possible relative moves
+      * For those moves that are inside the board, add a new node to the queue with updated distance and path
+* Key issue with this impelmentation is needing to resort to deep copies for the path attributes (list objects), otherwise, mayhem happens.
+
 
 ### Assignment
 Build a function `knight_moves` that shows the shortest possible way to get from one square to another by outputting all squares the knight will stop on along the way.
