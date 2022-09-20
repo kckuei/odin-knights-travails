@@ -28,6 +28,8 @@ knight_moves([3,3],[0,0]) == [[3,3],[1,2],[0,0]]
 ### Implementation
 
 ```ruby
+require 'set'
+
 # Node class
 class Node
   attr_accessor :x, :y, :dist, :path
@@ -56,7 +58,7 @@ def knight_moves(start, dest, size)
   col = [-1, 1, 1, -1, 2, -2, 2, -2]
 
   # initialize start and end nodes
-  start_node = Node.new(start[0], start[1])
+  start_node = Node.new(start[0], start[1], dist = 0, path = [start])
   dest_node = Node.new(dest[0], dest[1])
 
   # set to check if the matrix cell is visited before or not
@@ -95,6 +97,11 @@ def knight_moves(start, dest, size)
       queue.push(next_node)
     end
   end
+end
+
+def print_results(node)
+  puts "You made it in #{node.dist} moves! Here's your path:"
+  node.path.each { |loc| p loc }
 end
 ```
 
